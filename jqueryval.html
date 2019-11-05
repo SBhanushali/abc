@@ -1,0 +1,125 @@
+<!--Implement client side validation using jQuery-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery Form Validation</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+		<style type="text/css">
+			body {
+				font-family: sans-serif;
+			}
+			.error {
+				color: red;
+				margin-left: 5px;
+				font-size: 14px;
+				padding: 2px;
+				border: solid 2px red;
+				border-radius: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Client-Side Form validation</h3>
+		<form id="myForm" method="POST">
+			<div>
+				<fieldset style="width: 700px">
+					<legend>jQuery Form</legend>
+					<p>
+						<label id="abcd">Name:</label>
+						<input type="text" name="fname" id="fname">
+					</p>
+					<p>
+						<label>Phone No:</label>
+						<input type="text" name="phone" id="phone">
+					</p>
+					<p>
+						<label>Email ID:</label>
+						<input type="text" name="email" id="email">
+					</p>
+					<p>
+						<label>Password:</label>
+						<input type="password" name="pass" id="pass">
+					</p>
+				</fieldset>
+				<br>
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+		<script type="text/javascript">
+			/*$(document).ready(function() {
+				$('#myForm').submit(function(e) {
+					e.preventDefault();
+					var first_name = $("#fname").val();
+					var phone_no = $("#phone").val();
+					var email_id = $("#email").val();
+					var passw = $("#pass").val();
+					$(".error").remove();
+					if(first_name.length < 1) {
+						$("#fname").after("<span class='error'>Name cannot be blank</span>");
+					}
+					if(phone_no.length < 1) {
+						$("#phone").after("<span class='error'>Phone Number cannot be blank</span>");
+					}
+					else {
+						if(isNaN(phone_no)) {
+							$("#phone").after("<span class='error'>Enter a valid phone number</span>");
+						}
+					}
+					if(email_id.length < 1) {
+						$("#email").after("<span class='error'>Please enter an Email ID</span>");
+					}
+					if(passw.length < 1) {
+						$("#pass").after("<span class='error'>Password cannot be blank</span>");
+					}
+					else if(passw.length < 7) {
+						$("#pass").after("<span class='error'>Password should be of at least 7 characters</span>");
+					}
+				});
+			});*/
+			$(document).ready(function() {
+				$("#myForm").validate( {
+					rules: {
+						fname: {
+							required: true,
+							minlength: 3
+						},
+						phone: {
+							required: true,
+							number: true,
+							minlength: 10
+						},
+						email: {
+							required: true,
+							email: true
+						},
+						pass: {
+							required: true,
+							minlength: 7
+						}
+					},
+					messages: {
+						fname: {
+							minlength: "Enter a valid phone number"
+						},
+						phone: {
+							required: "Please enter a Phone Number",
+							digits: "Please enter a valid phone number",
+						},
+						email: {
+							required: "Please enter an Email ID",
+							email: "Please enter a valid Email ID"
+						},
+						pass: {
+							minlength: "Please enter a valid password"
+						}
+					},
+					submitHandle: function(form) {
+						form.submit();
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
