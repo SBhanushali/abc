@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Form Validation</title>
+		<style type="text/css">
+			body {
+				font-family: sans-serif;
+			}
+			fieldset {
+				width: 400px;
+				border-radius: 4px;
+			}
+		</style>
+		<script type="text/javascript">
+			function validate() {
+				var name = document.myForm.name.value;
+				var num  = document.myForm.num.value;
+				var emailId = document.myForm.email.value;
+				var errors = new Array();
+				if(name == "") {
+					errors.push("Please enter your name");
+					document.myForm.name.focus;
+
+				}
+				if(num == "") {
+					errors.push("Please enter your number");
+					document.myForm.num.focus;
+				}
+				else {
+					if(isNaN(num)) {
+						errors.push("Please enter a valid phone number");
+						document.myForm.num.focus;
+					}
+				}
+				if(emailId == "") {
+					errors.push("Please enter your Email-ID");
+					document.myForm.email.focus;
+				}
+				else {
+					alert(emailId);
+					var atpos = emailId.toString().indexOf("@");
+					var dotpos = emailId.toString().lastIndexOf(".");
+					if(atpos < 1 || (dotpos - atpos) < 2) {
+						errors.push("Please enter a valid Email-ID");
+						document.myForm.email.focus;
+					}
+				}
+				if(errors.length > 0) {
+					alert(errors.toString());
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h3>Client-side Form Validation</h4>
+		<form action="exp3.html" method="POST" name="myForm" onsubmit="return validate()">
+			<div>
+				<fieldset style="width: 400px;">
+					<legend>Information</legend>
+					<p>
+						<label>Name:</label>
+						<input type="text" name="name">
+					</p>
+					<p>
+						<label>Number:</label>
+						<input type="text" name="num">
+					</p>
+					<p>
+						<label>Email ID:</label>
+						<input type="text" name="email">
+					</p>
+					<label>Gender:</label>
+					<input type="radio" name="gen" value="male">Male
+					<input type="radio" name="gen" value="female">Female
+					<input type="radio" name="gen" value="other">Other
+					<p>
+						<label>DOB:</label>
+						<input type="date" name="dob">
+					</p>
+					<p>
+						Country:
+						<select name="country">
+							<option disabled selected>Select Country</option>
+							<option value="ind">India</option>
+							<option value="usa">USA</option>
+							<option value="fra">France</option>
+							<option value="rus">Russia</option>
+						</select>
+					</p>
+				</fieldset>
+				<br>
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</body>
+</html>
