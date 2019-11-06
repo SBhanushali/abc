@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register Student</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #ecf1f4;
+        font-family: sans-serif;
+      }
+
+      .form-wrap {
+        width: 320px;
+        background: #3e3d3d;
+        padding: 40px 20px;
+        box-sizing: border-box;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      h1 {
+        text-align: center;
+        color: #fff;
+        font-weight: normal;
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        background: none;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 6px 15px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      select {
+        width: 100%;
+        background: none;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 6px 15px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      input[type="button"] {
+        background: #bac675;
+        border: 0;
+        cursor: pointer;
+        color: #3e3d3d;
+      }
+      input[type="button"]:hover {
+        background: #a4b15c;
+        transition: 0.6s;
+      }
+
+      ::placeholder {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-wrap">
+      <h1>REGISTER</h1>
+      <form
+        action=""
+        name="register"
+        id="register"
+        method="POST"
+        onsubmit="return validate()"
+      >
+        <input type="text" name="fname" placeholder="First Name" />
+        <input type="text" name="lname" id="lname" placeholder="Last Name" />
+        <input type="text" name="email" id="email" placeholder="Enter Email" />
+        <input
+          type="number"
+          name="mobile"
+          id="mobile"
+          placeholder="Enter mobile number"
+        />
+        <input
+          type="text"
+          name="college"
+          id="college"
+          placeholder="Enter college"
+        />
+        <select name="year" id="year">
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+        <input type="submit" name="submit" value="submit" id="submit" />
+      </form>
+      <div id="output"></div>
+    </div>
+    <script type="text/javascript">
+      function validate() {
+        var fname1 = document.forms["register"]["fname"].value;
+        var lname1 = document.register.lname.value;
+        var email1 = document.register.email.value;
+        var mobile1 = document.register.mobile.value;
+        var college1 = document.register.college.value;
+        var year1 = document.register.year.value;
+        document.getElementById("output").innerHTML = fname1;
+        return true;
+      }
+    </script>
+  </body>
+</html>
